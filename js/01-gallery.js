@@ -2,7 +2,7 @@ import { galleryItems } from './gallery-items.js';                              
 // Change code below this line
 let galleryEl = document.querySelector('.gallery');                                             // елемент = узел разметки
 
-const listPictureEl = galleryItems                                                              //готовим шаблонную строку кода картинки галереи
+const listPictureEl = galleryItems                                                              //готовим шаблонную строку кода картинки галереи как подсказали
   .map(                                                                                         //мапим (перебираем каждый елемент) массива импортируемых данных
     pict => `<div class="gallery__item">                      
                 <a class="gallery__link" href=${pict.original}>
@@ -24,11 +24,13 @@ const lengthEL = document.getElementsByClassName('gallery__item').length;       
 for (let i = 0; i < lengthEL; i +=1) {                                                              //для каждого елемента массива
   document.getElementsByClassName('gallery__link')[i].addEventListener('click', function (event) {  // вставляем ухо на каждуюю картинку 
     event.preventDefault();                                                                         // убираем действия браузера по умолчанию
-    // return false;                                                                                  // возвращаем фолс
   });
   
-  const currentImg = document.getElementsByClassName('gallery__image')[i].dataset.source;
-  document.getElementsByClassName('gallery__item')[i].onclick = () => {
+  const currentImg = document.getElementsByClassName('gallery__image')[i].dataset.source;            // определяем текущую картинку
+ 
+ 
+ 
+  document.getElementsByClassName('gallery__item')[i].onclick = () => {                               // для елемента с классом item по событию выполняем функцию
     const instance = basicLightbox.create(`<img width="1280" height="720" src=${currentImg}>`);
     instance.show();
     document.addEventListener('keyup', e => {
